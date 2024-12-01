@@ -32,51 +32,26 @@
 
     <section class="productos">
       <h2>Productos Destacados</h2>
-      <div class="grid-productos">
-
-        <article class="producto">
-          <img src="Images/comida_perros.webp" alt="Comida para perros">
-          <h3>Comida para Perros</h3>
-          <p>Nutrición completa y balanceada.</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article class="producto">
-          <img src="Images/cama_perros.webp" alt="Cama para perros">
-          <h3>Cama para Perros</h3>
-          <p>Comodidad para tu mascota.</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article class="producto">
-          <img src="Images/comida_gatos.webp" alt="Comida para gatos">
-          <h3>Comida para Gatos</h3>
-          <p>Nutrición completa y balanceada.</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article class="producto">
-          <img src="Images/juguete_perros.webp" alt="Juguete para perros">
-          <h3>Juguete para Perros</h3>
-          <p>Horas y horas de diversion para tu peludo.</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article class="producto">
-          <img src="Images/juguete_gatos.webp" alt="Juguete para gatos">
-          <h3>Juguete para Gatos</h3>
-          <p>Diversion asegurada para tu mascota.</p>
-          <button>Añadir al carrito</button>
-        </article>
-
-        <article class="producto">
-          <img src="Images/gimnasio_gatos.webp" alt="Gimnasio para gatos">
-          <h3>Gimnasio para Gatos</h3>
-          <p>Entretenimiento unico para tus gatos.</p>
-          <button>Añadir al carrito</button>
-        </article>
-
+      <div class="grid-productos" id="productos-container">
+        <!-- Los productos se generarán dinámicamente con JavaScript -->
       </div>
+    </section>
+
+    <section class="contacto">
+      <h2>Contáctanos</h2>
+      <form id="form-contacto">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo" placeholder="Tu correo" required>
+        
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" required></textarea>
+        
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="mensaje-exito" style="display: none; color: green;">¡Mensaje enviado exitosamente!</p>
     </section>
   </main>
 
@@ -87,5 +62,64 @@
       <li><a href="#">Términos y condiciones</a></li>
     </ul>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Lista de productos
+    const productos = [
+      { id: 1, nombre: "Comida para Perros", descripcion: "Nutrición completa y balanceada.", img: "Images/comida_perros.webp" },
+      { id: 2, nombre: "Cama para Perros", descripcion: "Comodidad para tu mascota.", img: "Images/cama_perros.webp" },
+      { id: 3, nombre: "Comida para Gatos", descripcion: "Nutrición completa y balanceada.", img: "Images/comida_gatos.webp" },
+      { id: 4, nombre: "Juguete para Perros", descripcion: "Horas y horas de diversión.", img: "Images/juguete_perros.webp" },
+      { id: 5, nombre: "Juguete para Gatos", descripcion: "Diversión asegurada.", img: "Images/juguete_gatos.webp" },
+      { id: 6, nombre: "Gimnasio para Gatos", descripcion: "Entretenimiento único.", img: "Images/gimnasio_gatos.webp" }
+    ];
+
+    // Generar productos dinámicamente
+    const productosContainer = document.getElementById('productos-container');
+    productos.forEach(producto => {
+      const productoHTML = `
+        <article class="producto">
+          <img src="${producto.img}" alt="${producto.nombre}">
+          <h3>${producto.nombre}</h3>
+          <p>${producto.descripcion}</p>
+          <button class="btn-agregar" data-id="${producto.id}">Añadir al carrito</button>
+        </article>
+      `;
+      productosContainer.innerHTML += productoHTML;
+    });
+
+    // Validación del formulario de contacto
+    document.getElementById('form-contacto').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+
+      if (!nombre || !correo || !mensaje) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
+
+      if (!/\S+@\S+\.\S+/.test(correo)) {
+        alert("Por favor, ingresa un correo electrónico válido.");
+        return;
+      }
+
+      document.getElementById('mensaje-exito').style.display = 'block';
+      document.getElementById('form-contacto').reset();
+    });
+
+    // Añadir productos al carrito
+    document.addEventListener('click', function (e) {
+      if (e.target.classList.contains('btn-agregar')) {
+        const idProducto = e.target.getAttribute('data-id');
+        const producto = productos.find(p => p.id == idProducto);
+        alert(`¡${producto.nombre} añadido al carrito!`);
+      }
+    });
+  </script>
+
+<script src="script.js"></script>
 </body>
 </html>
