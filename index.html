@@ -33,7 +33,6 @@
     <section class="productos">
       <h2>Productos Destacados</h2>
       <div class="grid-productos" id="productos-container">
-        <!-- Los productos se generarán dinámicamente con JavaScript -->
       </div>
     </section>
 
@@ -63,9 +62,7 @@
     </ul>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Lista de productos
     const productos = [
       { id: 1, nombre: "Comida para Perros", descripcion: "Nutrición completa y balanceada.", img: "Images/comida_perros.webp" },
       { id: 2, nombre: "Cama para Perros", descripcion: "Comodidad para tu mascota.", img: "Images/cama_perros.webp" },
@@ -75,7 +72,6 @@
       { id: 6, nombre: "Gimnasio para Gatos", descripcion: "Entretenimiento único.", img: "Images/gimnasio_gatos.webp" }
     ];
 
-    // Generar productos dinámicamente
     const productosContainer = document.getElementById('productos-container');
     productos.forEach(producto => {
       const productoHTML = `
