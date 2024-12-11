@@ -18,7 +18,7 @@ app.get('/api/productos', (req, res) => {
   res.json(productos);
 });
 
-app.use(express.static('Images'));
+app.use(express.static('public'));
 
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
