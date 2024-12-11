@@ -1,4 +1,3 @@
-// Generar dinámicamente los productos
 const productos = [
     {
       nombre: "Comida para Perros",
