@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
     <div class="logo">
       <h1>PetShopNova</h1>
@@ -41,13 +40,13 @@
       <form id="form-contacto">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-        
+
         <label for="correo">Correo Electrónico:</label>
         <input type="email" id="correo" name="correo" placeholder="Tu correo" required>
-        
+
         <label for="mensaje">Mensaje:</label>
         <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí" required></textarea>
-        
+
         <button type="submit">Enviar</button>
       </form>
       <p id="mensaje-exito" style="display: none; color: green;">¡Mensaje enviado exitosamente!</p>
@@ -63,27 +62,28 @@
   </footer>
 
   <script>
-    const productos = [
-      { id: 1, nombre: "Comida para Perros", descripcion: "Nutrición completa y balanceada.", img: "Images/comida_perros.webp" },
-      { id: 2, nombre: "Cama para Perros", descripcion: "Comodidad para tu mascota.", img: "Images/cama_perros.webp" },
-      { id: 3, nombre: "Comida para Gatos", descripcion: "Nutrición completa y balanceada.", img: "Images/comida_gatos.webp" },
-      { id: 4, nombre: "Juguete para Perros", descripcion: "Horas y horas de diversión.", img: "Images/juguete_perros.webp" },
-      { id: 5, nombre: "Juguete para Gatos", descripcion: "Diversión asegurada.", img: "Images/juguete_gatos.webp" },
-      { id: 6, nombre: "Gimnasio para Gatos", descripcion: "Entretenimiento único.", img: "Images/gimnasio_gatos.webp" }
-    ];
-
     const productosContainer = document.getElementById('productos-container');
-    productos.forEach(producto => {
-      const productoHTML = `
-        <article class="producto">
-          <img src="${producto.img}" alt="${producto.nombre}">
-          <h3>${producto.nombre}</h3>
-          <p>${producto.descripcion}</p>
-          <button class="btn-agregar" data-id="${producto.id}">Añadir al carrito</button>
-        </article>
-      `;
-      productosContainer.innerHTML += productoHTML;
-    });
+
+    // Cargar productos desde la API del servidor
+    fetch('http://localhost:3000/api/productos')
+      .then(response => response.json())
+      .then(productos => {
+        productos.forEach(producto => {
+          const productoHTML = `
+            <article class="producto">
+              <img src="${producto.img}" alt="${producto.nombre}">
+              <h3>${producto.nombre}</h3>
+              <p>${producto.descripcion}</p>
+              <button class="btn-agregar" data-id="${producto.id}">Añadir al carrito</button>
+            </article>
+          `;
+          productosContainer.innerHTML += productoHTML;
+        });
+      })
+      .catch(error => {
+        console.error('Error al cargar los productos:', error);
+        productosContainer.innerHTML = `<p>Error al cargar los productos. Por favor, intente nuevamente más tarde.</p>`;
+      });
 
     // Validación del formulario de contacto
     document.getElementById('form-contacto').addEventListener('submit', function (e) {
@@ -110,12 +110,9 @@
     document.addEventListener('click', function (e) {
       if (e.target.classList.contains('btn-agregar')) {
         const idProducto = e.target.getAttribute('data-id');
-        const producto = productos.find(p => p.id == idProducto);
-        alert(`¡${producto.nombre} añadido al carrito!`);
+        alert(`Producto con ID ${idProducto} añadido al carrito.`);
       }
     });
   </script>
-
-<script src="script.js"></script>
 </body>
 </html>
