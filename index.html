@@ -64,8 +64,7 @@
   <script>
     const productosContainer = document.getElementById('productos-container');
 
-    // Cargar productos desde la API del servidor
-    fetch('https://pet-shop-nova-r4wezzjbp-maikol-fernandezs-projects.vercel.app')
+    fetch('https://pet-shop-nova.vercel.app')
       .then(response => response.json())
       .then(productos => {
         productos.forEach(producto => {
