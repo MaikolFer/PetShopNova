@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 
 const corsOptions = {
-  origin: 'https://pet-shop-nova.vercel.app',
+  origin: 'https://pet-shop-nova.vercel.app/api/productos',
   methods: ['GET', 'POST'],
 };
 
