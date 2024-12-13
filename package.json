@@ -4,6 +4,7 @@
   "description": "PetShopNova es una plataforma de productos para mascotas moderna y fácil de usar, diseñada para brindar la mejor experiencia de compra en línea. Nuestro objetivo es ofrecer una amplia variedad de productos para tus amigos peludos, asegurando una compra segura y eficiente para el cliente.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,4 +15,3 @@
     "express": "^4.21.1"
   }
 }
-
