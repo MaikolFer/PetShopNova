@@ -3,7 +3,12 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://pet-shop-nova-r4wezzjbp-maikol-fernandezs-projects.vercel.app',
+  methods: ['GET', 'POST'],
+};
+
+app.use(cors(corsOptions));
 
 const productos = [
   { id: 1, nombre: "Comida para Perros", descripcion: "Nutrición completa y balanceada.", img: "Images/comida_perros.webp" },
@@ -23,3 +28,4 @@ app.use(express.static('Images'));
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
+
