@@ -3,32 +3,32 @@ const productos = [
   {
     nombre: "Comida para Perros",
     descripcion: "Nutrición completa y balanceada.",
-    imagen: "Images/comida_perros.webp",
+    imagen: "images/comida_perros.webp",
   },
   {
     nombre: "Cama para Perros",
     descripcion: "Comodidad para tu mascota.",
-    imagen: "Images/cama_perros.webp",
+    imagen: "images/cama_perros.webp",
   },
   {
     nombre: "Comida para Gatos",
     descripcion: "Nutrición completa y balanceada.",
-    imagen: "Images/comida_gatos.webp",
+    imagen: "images/comida_gatos.webp",
   },
   {
     nombre: "Juguete para Perros",
     descripcion: "Horas y horas de diversión para tu peludo.",
-    imagen: "Images/juguete_perros.webp",
+    imagen: "images/juguete_perros.webp",
   },
   {
     nombre: "Juguete para Gatos",
     descripcion: "Diversión asegurada para tu mascota.",
-    imagen: "Images/juguete_gatos.webp",
+    imagen: "images/juguete_gatos.webp",
   },
   {
     nombre: "Gimnasio para Gatos",
     descripcion: "Entretenimiento único para tus gatos.",
-    imagen: "Images/gimnasio_gatos.webp",
+    imagen: "images/gimnasio_gatos.webp",
   },
 ];
 
@@ -76,5 +76,3 @@ contenedorProductos.addEventListener("click", (event) => {
     alert(`${productoNombre} añadido al carrito.`);
   }
 });
-
-  
