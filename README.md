@@ -91,6 +91,14 @@ Acceder al proyecto en producción:
 Una vez desplegado, podrás acceder a la aplicación a través de la URL proporcionada por tu servidor o plataforma de despliegue.
 
 
+![Despliegue](images/Despliegue.png)
+
+En la imagen podemos ver la pagina una vez desplegada en vercel, funciana tanto el Front-End como el Back-End de manera correcta.
+
+![Lighthouse](images/Lighthouse.png)
+
+Aqui se puede evidenciar que la pagina nos mostro muy buenos resultados en las pruebas realizadas en lighthouse, demostrando su eficacia y buena estructura.
+
 ## Autor
 
 Maikol Fernandez.
